@@ -19,5 +19,5 @@ PRODUCER_CONFIG="bootstrap.servers=$DEST_DNS:9093\nclient.id=mirror_maker_produc
 echo -e $PRODUCER_CONFIG > producer.config
 
 pwd
-
-bin/kafka-mirror-maker.sh --consumer.config consumer.config --producer.config producer.config --whitelist=".*" --num.streams 8
+ls
+#bin/kafka-mirror-maker.sh --consumer.config consumer.config --producer.config producer.config --whitelist=".*" --num.streams 8
