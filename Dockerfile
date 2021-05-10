@@ -30,9 +30,10 @@ RUN apt-get update && \
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
 RUN export JAVA_HOME
 
-RUN wget http://www-us.apache.org/dist/kafka/2.7.0/kafka_2.13-2.7.0.tgz && \
-     tar -xzf kafka_2.13-2.7.0.tgz;
+RUN cd /usr/src/app && \
+    wget http://www-us.apache.org/dist/kafka/2.7.0/kafka_2.13-2.7.0.tgz && \
+    tar -xzf kafka_2.13-2.7.0.tgz;
 
-#CMD cd kafka_2.13-2.7.0 
-WORKDIR /usr/src/app
-ENTRYPOINT ["/usr/src/app/mirrorstart.sh", "$DEST_CON_STR"]
+#CMD cd kafka_2.13-2.7.0
+WORKDIR /usr/src/app/kafka_2.13-2.7.0
+ENTRYPOINT ["/usr/src/app/kafka_2.13-2.7.0/mirrorstart.sh", "$DEST_CON_STR"]
