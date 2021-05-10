@@ -18,4 +18,6 @@ echo -e $CONSUMER_CONFIG > consumer.config
 PRODUCER_CONFIG="bootstrap.servers=$DEST_DNS:9093\nclient.id=mirror_maker_producer\nrequest.timeout.ms=60000\nsasl.mechanism=PLAIN\nsecurity.protocol=SASL_SSL\nsasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username=\"\$ConnectionString\" password=\"$DEST_CON_STR\";"
 echo -e $PRODUCER_CONFIG > producer.config
 
+pwd
+
 bin/kafka-mirror-maker.sh --consumer.config consumer.config --producer.config producer.config --whitelist=".*" --num.streams 8
