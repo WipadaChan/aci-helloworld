@@ -20,4 +20,4 @@ echo -e $PRODUCER_CONFIG > producer.config
 
 pwd
 ls
-#bin/kafka-mirror-maker.sh --consumer.config consumer.config --producer.config producer.config --whitelist=".*" --num.streams 8
+/usr/src/app/kafka_2.13-2.7.0/bin/kafka-mirror-maker.sh --consumer.config consumer.config --producer.config producer.config --whitelist=".*" --num.streams 8

@@ -35,5 +35,5 @@ RUN cd /usr/src/app && \
     tar -xzf kafka_2.13-2.7.0.tgz;
 
 #CMD cd kafka_2.13-2.7.0
-WORKDIR /usr/src/app/kafka_2.13-2.7.0
-ENTRYPOINT ["/usr/src/app/kafka_2.13-2.7.0/mirrorstart.sh", "$DEST_CON_STR"]
+WORKDIR /usr/src/app/
+ENTRYPOINT ["/usr/src/app/mirrorstart.sh", "$DEST_CON_STR"]
