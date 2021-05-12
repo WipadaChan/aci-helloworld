@@ -15,9 +15,18 @@ RUN apt-get update && \
 # Setup JAVA_HOME -- useful for docker commandline
 ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
 RUN export JAVA_HOME
-ADD mirrorstart.sh /
 
-RUN wget http://www-us.apache.org/dist/kafka/2.7.0/kafka_2.13-2.7.0.tgz && \
-    tar -xzf kafka_2.13-2.7.0.tgz;
+# Install H2O on python requirements
+RUN pip install requests && \
+    pip install tabulate && \
+    pip install six && \
+    pip install future && \
+    pip install colorama
 
-ENTRYPOINT ["/mirrorstart.sh", "$SOURCE_CON_STR", "$DEST_CON_STR"]
+# Expose H2O Flow UI port
+EXPOSE 54321
+
+# Install H2O
+RUN \
+    pip uninstall h2o || true && \
+    pip install -f http://h2o-release.s3.amazonaws.com/h2o/latest_stable_Py.html --trusted-host h2o-release.s3.amazonaws.com h2o
